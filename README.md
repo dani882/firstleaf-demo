@@ -30,4 +30,4 @@ Simple and dark to-do list developed in React
 
  
 # App served in container nginx
-![todo-app.png](images/todo-app.png)
+![todo-app](images/todo-app.png)
