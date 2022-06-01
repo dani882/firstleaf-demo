@@ -23,7 +23,7 @@ Simple and dark to-do list developed in React
 ==================================================================
 ==================================================================
 ==================================================================
-# Output of Container
+# Output of Container Locally
 
 ## Running the container
 ![startContainer](images/startContainer.png)
@@ -34,3 +34,24 @@ Simple and dark to-do list developed in React
  
 ## App served in container nginx
 ![todo-app](images/todo-app.png)
+
+
+# Output of AWS ECS Cluster
+
+## Terraform plan
+![tfplan](images/tfplan.png)
+
+## Terraform apply
+![tfapply](images/tfapply.png)
+
+## ECS Cluster
+![ecs-cluster](images/ecs-cluster.png)
+
+## Task with container running and it's public IP to access
+![task](images/task.png)
+
+## Accessing the container thoughtout it's public ip
+![containerinecs](images/containerinecs.png)
+
+## React app opened
+![appinecs](images/appinecs.png)

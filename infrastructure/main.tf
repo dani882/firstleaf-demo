@@ -26,7 +26,7 @@ module "vpc" {
   one_nat_gateway_per_az = false
 
   tags = {
-    Terraform = "true"
+    made_with = "terraform"
   }
 }
 
@@ -34,23 +34,11 @@ module "vpc" {
 module "http_80_security_group" {
   source              = "terraform-aws-modules/security-group/aws//modules/http-80"
   version             = "~> 4.0"
-  name                = "firstleaf_sg"
+  name                = var.sg_name
   vpc_id              = module.vpc.vpc_id
   ingress_cidr_blocks = ["0.0.0.0/0"]
 }
 
-# Create an AWS Application Load Balancer (ALB) and associated resources
-module "alb" {
-  source          = "terraform-aws-modules/alb/aws"
-  version         = "7.0.0"
-  vpc_id          = module.vpc.vpc_id
-  subnets         = module.vpc.public_subnets
-  security_groups = [module.http_80_security_group.security_group_id]
-}
-
-data "aws_lb_target_group" "test" {
-  arn = module.alb.*.target_group_arns
-}
 # Create the ECS cluster
 module "cluster" {
   source = "./ecs-cluster"
@@ -58,9 +46,4 @@ module "cluster" {
   project_name    = var.project_name
   security_groups = [module.http_80_security_group.security_group_id]
   subnets         = module.vpc.public_subnets
-  #   alb_target_group_arn = [var.alb_target_group_arn]
-}
-
-output "internet_gateway" {
-  value = data.aws_lb_target_group.test
 }
