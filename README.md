@@ -20,14 +20,17 @@ Simple and dark to-do list developed in React
 ![minimal-todo-list-preview-1](images/minimal-todo-list-preview-1.png)
 ![minimal-todo-list-preview-2](images/minimal-todo-list-preview-2.png)
 
-## Output
+==================================================================
+==================================================================
+==================================================================
+# Output of Container
 
-# Running the container
+## Running the container
 ![startContainer](images/startContainer.png)
 
-# Testing Auth
+## Testing Auth
 ![basic_auth](images/basic_auth.png)
 
  
-# App served in container nginx
+## App served in container nginx
 ![todo-app](images/todo-app.png)
