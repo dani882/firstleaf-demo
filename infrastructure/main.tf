@@ -39,14 +39,28 @@ module "http_80_security_group" {
   ingress_cidr_blocks = ["0.0.0.0/0"]
 }
 
+# Create an AWS Application Load Balancer (ALB) and associated resources
+module "alb" {
+  source          = "terraform-aws-modules/alb/aws"
+  version         = "7.0.0"
+  vpc_id          = module.vpc.vpc_id
+  subnets         = module.vpc.public_subnets
+  security_groups = [module.http_80_security_group.security_group_id]
+}
+
+data "aws_lb_target_group" "test" {
+  arn = module.alb.*.target_group_arns
+}
+# Create the ECS cluster
 module "cluster" {
   source = "./ecs-cluster"
 
-  project_name    = "firstleaf"
+  project_name    = var.project_name
   security_groups = [module.http_80_security_group.security_group_id]
   subnets         = module.vpc.public_subnets
+  #   alb_target_group_arn = [var.alb_target_group_arn]
 }
 
 output "internet_gateway" {
-  value = module.vpc.egress_only_internet_gateway_id
+  value = data.aws_lb_target_group.test
 }

@@ -17,5 +17,17 @@ Your task is as follows:
 
 Simple and dark to-do list developed in React
 
-![minimal-todo-list-preview-1](https://github.com/penrosehill/devops-assessments/blob/main/minimal-todo-list-preview-1.png?raw=true)
-![minimal-todo-list-preview-2](https://github.com/penrosehill/devops-assessments/blob/main/minimal-todo-list-preview-2.png?raw=true)
+![minimal-todo-list-preview-1](images/minimal-todo-list-preview-1.png)
+![minimal-todo-list-preview-2](images/minimal-todo-list-preview-2.png)
+
+## Output
+
+# Running the container
+![startContainer](images/startContainer.png)
+
+# Testing Auth
+![basic_auth](images/basic_auth.png)
+
+ 
+# App served in container nginx
+![todo-app.png](images/todo-app.png.png)
