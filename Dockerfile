@@ -9,7 +9,7 @@ RUN yarn && yarn build
 FROM nginx:stable-alpine
 # Generate htpasswd for basic http auth
 RUN apk add --update --no-cache openssl && echo -n 'firstleaf:' >> /etc/nginx/.htpasswd && \
-openssl passwd -apr1 test >> /etc/nginx/.htpasswd && apk del openssl && apk cache clean
+    openssl passwd -apr1 test >> /etc/nginx/.htpasswd && apk del openssl
 # Set working directory
 WORKDIR /usr/share/nginx/html
 # Remove default nginx default page
